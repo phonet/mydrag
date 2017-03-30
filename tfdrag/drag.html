@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        .wrap{}
+        .drag_btn{padding:5px 10px; text-align:center;height: 30px;cursor: move;cursor:-webkit-grabbing;}
+        .test_table{margin: 0 auto;background: #999;}
+        .test_table tr{width: 100%;}
+        .test_table td{width: 100px;text-align: center;}
+        tr:nth-child(odd){background: pink;}
+        tr:nth-child(evn){background: #8959a8;}
+        tr:hover{background: #718c00;}
+    </style>
+</head>
+<body>
+    <div style="height: 50px;"></div>
+    <div id="" class="wrap">
+        <table id="drag_table" class="test_table">
+            <tr id="1">
+                <td>1</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+            <tr id="2">
+                <td>2</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+            <tr id="3">
+                <td>3</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+            <tr id="4">
+                <td>4</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+            <tr id="5">
+                <td>5</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+            <tr id="6">
+                <td>6</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+            <tr id="7">
+                <td>7</td>
+                <td><input type="text"></td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+                <td>表格6</td>
+                <td><button class="drag_btn">拖拽排序</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="js/ddsort.js"></script>
+<script>
+    $('#drag_table').DDSort({
+        target: '.drag_btn',
+        floatStyle: {
+            'border': '1px solid #ccc',
+            'background-color': '#ccc'
+        },
+        up:dragEnd
+    });
+
+    /*拖拽完成后的回调函数*/
+    function dragEnd(res){
+        var cId = $(res).closest('tr').attr('id'),
+            pId = $(res).closest('tr').prev().attr('id'),
+            nId = $(res).closest('tr').next().attr('id');
+        console.log('current-->'+cId);
+        console.log('prev-->'+pId);
+        console.log('next-->'+nId);
+    }
+</script>
